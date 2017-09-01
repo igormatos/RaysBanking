@@ -32,18 +32,19 @@ public class PushService extends PushNotificationsService {
 				intent = new Intent(this, FormActivity.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				intent.putExtra(_formUrl, formUrl);
+			} else if (pushNotification.has(_creditLimit)) {
+				intent = new Intent(this, AccountActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+				int cardType = pushNotification.has(_cardType) ? pushNotification.getInt(_cardType) : -1;
+				intent.putExtra(_cardType, cardType);
+				intent.putExtra(_creditLimit, pushNotification.getLong(_creditLimit));
 			} else {
 				intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 			}
 
 			String message = pushNotification.has(_message) ? pushNotification.getString(_message) : "";
 			intent.putExtra(_message, message);
-
-			int cardType = pushNotification.has(_cardType) ? pushNotification.getInt(_cardType) : -1;
-			intent.putExtra(_cardType, cardType);
-
-			long creditLimit = pushNotification.has(_creditLimit) ? pushNotification.getLong(_creditLimit) : -1;
-			intent.putExtra(_creditLimit, creditLimit);
 
 			PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
