@@ -1,5 +1,5 @@
 <resources>
 	<string name="app_name">Ray\'s Banking</string>
 	<string name="hello_text">Olá, %1$s.\n</string>
-	<string name="account_approved_message">Olá, %1$s! Sua conta foi aberta e seu crédito aprovado. Agradecemos por nos escolher! </string>
+	<string name="account_approved_message">Olá, %1$s! Seu cartão de crédito foi aprovado. Agradecemos por nos escolher! </string>
 </resources>
