@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 		String name = SessionContext.getCurrentUser().getFirstName();
 		String helloText = String.format(getString(R.string.hello_text), name);
 		binding.helloText.setText(helloText);
-
 	}
 
 	@Override

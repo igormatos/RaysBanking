@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
@@ -55,12 +56,11 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
 	}
 
 	private void _registerForPush() {
-//		EditText emailField = binding.loginScreenlet.findViewById(R.id.liferay_login);
-//		EditText passwordField = binding.loginScreenlet.findViewById(R.id.liferay_password);
-//		String email = emailField.getText().toString();
-//		String password = passwordField.getText().toString();
-		String email = "test@liferay.com";
-		String password = "test";
+		EditText emailField = binding.loginScreenlet.findViewById(R.id.liferay_login);
+		EditText passwordField = binding.loginScreenlet.findViewById(R.id.liferay_password);
+		String email = emailField.getText().toString();
+		String password = passwordField.getText().toString();
+
 		BasicAuthentication authentication = new BasicAuthentication(email, password);
 
 		Session session = new SessionImpl(getString(R.string.liferay_server), authentication);

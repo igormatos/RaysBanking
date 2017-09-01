@@ -3,8 +3,8 @@
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<uses-permission android:name="android.permission.INTERNET"/>
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
 
 	<application
 		android:allowBackup="true"
@@ -18,24 +18,28 @@
 		<activity android:name=".LoginActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
-
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".SignUpActivity" android:label="Sign up for Ray\'s Bank">
+		<activity
+			android:name=".SignUpActivity"
+			android:label="Sign up for Ray\&apos;s Bank">
 		</activity>
-
 
 		<receiver
 			android:name=".PushReceiver"
 			android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
-				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
-				<category android:name="com.liferay.mobile.push" />
+				<action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+				<category android:name="com.liferay.mobile.push"/>
 			</intent-filter>
 		</receiver>
-		<service android:name=".PushService" />
 
+		<service android:name=".PushService"/>
+
+		<activity
+			android:name=".FormActivity">
+		</activity>
 	</application>
 
 </manifest>
