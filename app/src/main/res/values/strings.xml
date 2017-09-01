@@ -1,8 +1,4 @@
 <resources>
 	<string name="app_name">Ray\'s Banking</string>
-	<string name="hello_text">Olá, %1$s.\nRecebemos suas informações e estamos
-		fazendo a sua análise de crédito. Fique ligado que você vai
-		receber uma resposta logo.
-		Agradecemos seu interesse pelo Ray’s Bank.
-	</string>
+	<string name="hello_text">Olá, %1$s.\n</string>
 </resources>
