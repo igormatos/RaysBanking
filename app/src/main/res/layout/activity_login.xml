@@ -11,13 +11,14 @@
 			android:id="@+id/login_screenlet"
 			android:layout_width="0dp"
 			android:layout_height="300dp"
-			app:loginMode="basic"
-			app:credentialsStorage="shared_preferences"
+			android:layout_marginTop="0dp"
 			app:basicAuthMethod="email"
 			app:companyId="20111"
+			app:credentialsStorage="shared_preferences"
 			app:layout_constraintLeft_toLeftOf="parent"
 			app:layout_constraintRight_toRightOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
+			app:layout_constraintTop_toTopOf="parent"
+			app:loginMode="basic"/>
 
 		<TextView
 			android:id="@+id/sign_up"

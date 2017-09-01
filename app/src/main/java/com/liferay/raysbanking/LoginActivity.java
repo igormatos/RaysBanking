@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
@@ -14,7 +13,9 @@ import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.push.Push;
 import com.liferay.mobile.screens.auth.login.LoginListener;
+import com.liferay.mobile.screens.context.SessionContext;
 import com.liferay.mobile.screens.context.User;
+import com.liferay.mobile.screens.context.storage.CredentialsStorageBuilder;
 import com.liferay.raysbanking.databinding.ActivityLoginBinding;
 
 import org.json.JSONException;
@@ -28,6 +29,10 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+
+		if (SessionContext.isLoggedIn()) {
+			_goToMainActivity();
+		}
 
 		binding.loginScreenlet.setListener(this);
 		binding.signUp.setOnClickListener(new View.OnClickListener() {
@@ -43,11 +48,10 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
 	public void onLoginSuccess(User user) {
 		Toast.makeText(this, "Login feito com sucesso", Toast.LENGTH_SHORT).show();
 
+		SessionContext.setCurrentUser(user);
+		SessionContext.storeCredentials(CredentialsStorageBuilder.StorageType.SHARED_PREFERENCES);
 		_registerForPush();
-
-		Intent intent = new Intent(this, MainActivity.class);
-		startActivity(intent);
-//		finish();
+		_goToMainActivity();
 	}
 
 	private void _registerForPush() {
@@ -66,16 +70,16 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
 
 		try {
 			push.onSuccess(new Push.OnSuccess() {
-					@Override
-					public void onSuccess(JSONObject jsonObject) {
-						try {
-							String token = jsonObject.getString("token");
-							Log.e("RAYBANK", "onSuccess" + token);
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
+				@Override
+				public void onSuccess(JSONObject jsonObject) {
+					try {
+						String token = jsonObject.getString("token");
+						Log.e("RAYBANK", "onSuccess" + token);
+					} catch (JSONException e) {
+						e.printStackTrace();
 					}
-				})
+				}
+			})
 				.onFailure(new Push.OnFailure() {
 					@Override
 					public void onFailure(Exception e) {
@@ -92,5 +96,11 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
 	public void onLoginFailure(Exception e) {
 		Toast.makeText(this, "Falha no login", Toast.LENGTH_SHORT).show();
 		Log.d("RAYBANK", "Falha no Login" + String.valueOf(e));
+	}
+
+	private void _goToMainActivity() {
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+		finish();
 	}
 }
