@@ -34,5 +34,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.liferay.mobile:liferay-screens:+'
     compile 'com.liferay.mobile:liferay-push:1.1.0'
+    compile 'com.afollestad:bridge:5.1.2'
+//    compile 'com.github.jkwiecien:EasyImage:2.0.0'
     testCompile 'junit:junit:4.12'
 }

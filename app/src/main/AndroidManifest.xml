@@ -5,6 +5,8 @@
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.WAKE_LOCK"/>
 	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
 	<application
 		android:allowBackup="true"
@@ -13,7 +15,7 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".MainActivity">
+		<activity android:name=".MainActivity" android:screenOrientation="portrait">
 		</activity>
 		<activity android:name=".LoginActivity">
 			<intent-filter>
@@ -31,14 +33,15 @@
 			android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+
 				<category android:name="com.liferay.mobile.push"/>
 			</intent-filter>
 		</receiver>
 
 		<service android:name=".PushService"/>
-
-		<activity
-			android:name=".FormActivity">
+		<activity android:name=".FormActivity">
+		</activity>
+		<activity android:name=".UploadActivity">
 		</activity>
 	</application>
 
