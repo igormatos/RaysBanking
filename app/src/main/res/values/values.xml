@@ -6,5 +6,6 @@
 	<integer name="liferay_company_id">20111</integer>
 	<integer name="liferay_group_id">20138</integer>
 	<integer name="liferay_portal_version">70</integer>
+	<string name="firebase_sender_id">603053590931</string>
 
 </resources>

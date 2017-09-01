@@ -12,6 +12,7 @@
 			android:layout_width="0dp"
 			android:layout_height="300dp"
 			app:loginMode="basic"
+			app:credentialsStorage="shared_preferences"
 			app:basicAuthMethod="email"
 			app:companyId="20111"
 			app:layout_constraintLeft_toLeftOf="parent"

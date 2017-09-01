@@ -1,0 +1,54 @@
+package com.liferay.raysbanking;
+
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.util.Log;
+
+import com.liferay.mobile.push.PushNotificationsService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * @author Igor Matos
+ */
+
+public class PushService extends PushNotificationsService {
+
+	@Override
+	public void onPushNotification(JSONObject pushNotification) {
+		super.onPushNotification(pushNotification);
+
+		Log.e("RAYBANK", "onPush " + pushNotification.toString());
+
+		try {
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+			String message = pushNotification.has("message") ? pushNotification.getString("message").toString() : "";
+			intent.putExtra("message", message);
+
+			int cardType = pushNotification.has("cardType") ? pushNotification.getInt("cardType") : 0;
+			intent.putExtra("cardType", cardType);
+
+			PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+			Notification notification = new NotificationCompat.Builder(this)
+				.setContentText(message)
+				.setContentTitle("Ray's Banking")
+				.setSmallIcon(R.drawable.ic_credit_card_black)
+				.setContentIntent(pendingIntent)
+				.build();
+
+			NotificationManagerCompat manager = NotificationManagerCompat.from(
+				this);
+
+			manager.notify(message.hashCode(), notification);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+}
