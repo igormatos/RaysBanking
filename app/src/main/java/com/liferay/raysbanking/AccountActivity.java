@@ -22,15 +22,17 @@ public class AccountActivity extends AppCompatActivity {
 
 		String fullName = SessionContext.getCurrentUser().getFullName();
 		binding.name.setText(fullName);
+		binding.nameOnCard.setText(fullName);
 
 		Double creditLimit = getIntent().getDoubleExtra("creditLimit", 10.000);
-		binding.creditLimit.setText(String.valueOf(creditLimit));
+		String credidLimitFormatted = String.format( "R$ %.2f", creditLimit);
+		binding.creditLimit.setText(String.valueOf(credidLimitFormatted));
 
 		int cardType = getIntent().getIntExtra("cardType", 0);
 		if (cardType == 0) {
-			binding.cardName.setText("Cliente Master Platium Diamond Digital Experience");
+			binding.cardName.setText("Cliente Master Platinum Diamond Digital Experience");
 		} else {
-			binding.cardName.setText("Cliente Plastikum Silver");
+			binding.cardName.setText("Cliente Universitário");
 		}
 
 

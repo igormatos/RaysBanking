@@ -38,7 +38,7 @@ public class PushService extends PushNotificationsService {
 
 				int cardType = pushNotification.has(_cardType) ? pushNotification.getInt(_cardType) : -1;
 				intent.putExtra(_cardType, cardType);
-				intent.putExtra(_creditLimit, pushNotification.getLong(_creditLimit));
+				intent.putExtra(_creditLimit, pushNotification.getDouble(_creditLimit));
 			} else {
 				intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 			}
