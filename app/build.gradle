@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.liferay.raysbanking"
         minSdkVersion 15
@@ -31,9 +31,9 @@ dependencies {
 
     compile group: 'com.liferay.mobile', name: 'liferay-mobile-sdk-services', version: '1.0'
     //    compile 'com.github.jkwiecien:EasyImage:2.0.0'
-    compile 'com.android.support:appcompat-v7:26.+'
+//    compile 'com.android.support:appcompat-v7:25.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.liferay.mobile:liferay-screens:+'
+    compile 'com.liferay.mobile:liferay-screens:3.0.0'
     compile 'com.liferay.mobile:liferay-push:1.1.0'
     compile 'com.afollestad:bridge:5.1.2'
     testCompile 'junit:junit:4.12'

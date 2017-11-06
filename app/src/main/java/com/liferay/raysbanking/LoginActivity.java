@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
 		binding.signUp.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Intent intent = new Intent(view.getContext(), AccountActivity.class);
+				Intent intent = new Intent(view.getContext(), SignUpActivity.class);
 				startActivity(intent);
 			}
 		});
